@@ -1,6 +1,26 @@
 {
+	"locales(map)": {
+		"en": "🇬🇧 English (UK)",
+		"pl": "🇵🇱 Polski"
+	},
 	"appTitle": "Bloc Template",
 	"itemsList": {
-		"title": "Items"
+		"title": "Items",
+		"sampleItemTitle": "Sample item {itemId}"
+	},
+	"itemDetails": {
+		"title": "Item details",
+		"detailsPlaceholder": "Details for item {itemId}"
+	},
+	"settings": {
+		"title": "Settings",
+		"themes": {
+			"title": "Select a theme",
+			"options": {
+				"light": "Light",
+				"dark": "Dark",
+				"system": "System"
+			}
+		}
 	}
 }

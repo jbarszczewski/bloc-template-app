@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../i18n/translations.g.dart';
-import '../settings/settings_view.dart';
-import 'sample_item.dart';
+import '../../../../i18n/translations.g.dart';
+import '../../settings/presentation/settings_view.dart';
+import '../domain/sample_item.dart';
 import 'sample_item_details_view.dart';
 
 /// Displays a list of SampleItems.
@@ -50,7 +50,7 @@ class SampleItemsListView extends StatelessWidget {
           final item = items[index];
 
           return ListTile(
-              title: Text('SampleItem ${item.id}'),
+              title: Text(t.itemsList.sampleItemTitle(itemId: item.id)),
               leading: const CircleAvatar(
                 // Display the Flutter Logo image asset.
                 foregroundImage: AssetImage('assets/images/flutter_logo.png'),

@@ -3,10 +3,10 @@
 /// Original: lib/i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 1
-/// Strings: 2
+/// Locales: 2
+/// Strings: 22 (11 per locale)
 ///
-/// Built on 2024-05-16 at 18:58 UTC
+/// Built on 2024-06-14 at 09:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -25,7 +25,8 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en', build: Translations.build);
+	en(languageCode: 'en', build: Translations.build),
+	pl(languageCode: 'pl', build: _TranslationsPl.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -147,8 +148,14 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	Map<String, String> get locales => {
+		'en': '🇬🇧 English (UK)',
+		'pl': '🇵🇱 Polski',
+	};
 	String get appTitle => 'Bloc Template';
 	late final _TranslationsItemsListEn itemsList = _TranslationsItemsListEn._(_root);
+	late final _TranslationsItemDetailsEn itemDetails = _TranslationsItemDetailsEn._(_root);
+	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
 }
 
 // Path: itemsList
@@ -159,6 +166,140 @@ class _TranslationsItemsListEn {
 
 	// Translations
 	String get title => 'Items';
+	String sampleItemTitle({required Object itemId}) => 'Sample item ${itemId}';
+}
+
+// Path: itemDetails
+class _TranslationsItemDetailsEn {
+	_TranslationsItemDetailsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Item details';
+	String detailsPlaceholder({required Object itemId}) => 'Details for item ${itemId}';
+}
+
+// Path: settings
+class _TranslationsSettingsEn {
+	_TranslationsSettingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Settings';
+	late final _TranslationsSettingsThemesEn themes = _TranslationsSettingsThemesEn._(_root);
+}
+
+// Path: settings.themes
+class _TranslationsSettingsThemesEn {
+	_TranslationsSettingsThemesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Select a theme';
+	late final _TranslationsSettingsThemesOptionsEn options = _TranslationsSettingsThemesOptionsEn._(_root);
+}
+
+// Path: settings.themes.options
+class _TranslationsSettingsThemesOptionsEn {
+	_TranslationsSettingsThemesOptionsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get light => 'Light';
+	String get dark => 'Dark';
+	String get system => 'System';
+}
+
+// Path: <root>
+class _TranslationsPl extends Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_TranslationsPl.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.pl,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <pl>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
+
+	@override late final _TranslationsPl _root = this; // ignore: unused_field
+
+	// Translations
+	@override String get appTitle => 'Bloc Template (pl)';
+	@override late final _TranslationsItemsListPl itemsList = _TranslationsItemsListPl._(_root);
+	@override late final _TranslationsItemDetailsPl itemDetails = _TranslationsItemDetailsPl._(_root);
+	@override late final _TranslationsSettingsPl settings = _TranslationsSettingsPl._(_root);
+}
+
+// Path: itemsList
+class _TranslationsItemsListPl extends _TranslationsItemsListEn {
+	_TranslationsItemsListPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Pozycje';
+	@override String sampleItemTitle({required Object itemId}) => 'Przykladowa pozycja ${itemId}';
+}
+
+// Path: itemDetails
+class _TranslationsItemDetailsPl extends _TranslationsItemDetailsEn {
+	_TranslationsItemDetailsPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Szczegoly';
+	@override String detailsPlaceholder({required Object itemId}) => 'Szczegoly pozycji ${itemId}';
+}
+
+// Path: settings
+class _TranslationsSettingsPl extends _TranslationsSettingsEn {
+	_TranslationsSettingsPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ustawienia';
+	@override late final _TranslationsSettingsThemesPl themes = _TranslationsSettingsThemesPl._(_root);
+}
+
+// Path: settings.themes
+class _TranslationsSettingsThemesPl extends _TranslationsSettingsThemesEn {
+	_TranslationsSettingsThemesPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Wybierz motyw';
+	@override late final _TranslationsSettingsThemesOptionsPl options = _TranslationsSettingsThemesOptionsPl._(_root);
+}
+
+// Path: settings.themes.options
+class _TranslationsSettingsThemesOptionsPl extends _TranslationsSettingsThemesOptionsEn {
+	_TranslationsSettingsThemesOptionsPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get light => 'Jasny';
+	@override String get dark => 'Ciemny';
+	@override String get system => 'Systemowy';
 }
 
 /// Flat map(s) containing all translations.
@@ -167,8 +308,36 @@ class _TranslationsItemsListEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'locales.en': return '🇬🇧 English (UK)';
+			case 'locales.pl': return '🇵🇱 Polski';
 			case 'appTitle': return 'Bloc Template';
 			case 'itemsList.title': return 'Items';
+			case 'itemsList.sampleItemTitle': return ({required Object itemId}) => 'Sample item ${itemId}';
+			case 'itemDetails.title': return 'Item details';
+			case 'itemDetails.detailsPlaceholder': return ({required Object itemId}) => 'Details for item ${itemId}';
+			case 'settings.title': return 'Settings';
+			case 'settings.themes.title': return 'Select a theme';
+			case 'settings.themes.options.light': return 'Light';
+			case 'settings.themes.options.dark': return 'Dark';
+			case 'settings.themes.options.system': return 'System';
+			default: return null;
+		}
+	}
+}
+
+extension on _TranslationsPl {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'appTitle': return 'Bloc Template (pl)';
+			case 'itemsList.title': return 'Pozycje';
+			case 'itemsList.sampleItemTitle': return ({required Object itemId}) => 'Przykladowa pozycja ${itemId}';
+			case 'itemDetails.title': return 'Szczegoly';
+			case 'itemDetails.detailsPlaceholder': return ({required Object itemId}) => 'Szczegoly pozycji ${itemId}';
+			case 'settings.title': return 'Ustawienia';
+			case 'settings.themes.title': return 'Wybierz motyw';
+			case 'settings.themes.options.light': return 'Jasny';
+			case 'settings.themes.options.dark': return 'Ciemny';
+			case 'settings.themes.options.system': return 'Systemowy';
 			default: return null;
 		}
 	}

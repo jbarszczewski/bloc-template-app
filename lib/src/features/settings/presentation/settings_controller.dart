@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'settings_service.dart';
+import '../data/settings_service.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.
@@ -14,17 +14,22 @@ class SettingsController with ChangeNotifier {
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.
   ThemeMode? _themeMode;
+  String? _language;
 
   SettingsController(this._settingsService);
 
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode ?? ThemeMode.system;
 
+  // Allow Widgets to read the user's preferred language.
+  String get language => _language ?? 'en';
+
   /// Load the user's settings from the SettingsService. It may load from a
   /// local database or the internet. The controller only knows it can load the
   /// settings from the service.
   Future<void> loadSettings() async {
     _themeMode = await _settingsService.themeMode();
+    _language = await _settingsService.language();
 
     // Important! Inform listeners a change has occurred.
     notifyListeners();
@@ -46,5 +51,16 @@ class SettingsController with ChangeNotifier {
     // Persist the changes to a local database or the internet using the
     // SettingService.
     await _settingsService.updateThemeMode(newThemeMode);
+  }
+
+  /// Update and persist the language based on the user's selection.
+  Future<void> updateLanguage(String newLanguage) async {
+    if (newLanguage == _language) return;
+
+    _language = newLanguage;
+
+    notifyListeners();
+
+    await _settingsService.updateLanguage(newLanguage);
   }
 }

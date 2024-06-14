@@ -1,4 +1,4 @@
-import 'package:bloc_template_app/src/sample_feature/sample_items_list_view.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

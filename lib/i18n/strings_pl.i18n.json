@@ -1,0 +1,22 @@
+{
+	"appTitle": "Bloc Template (pl)",
+	"itemsList": {
+		"title": "Pozycje",
+		"sampleItemTitle": "Przykladowa pozycja {itemId}"
+	},
+	"itemDetails": {
+		"title": "Szczegoly",
+		"detailsPlaceholder": "Szczegoly pozycji {itemId}"
+	},
+	"settings": {
+		"title": "Ustawienia",
+		"themes": {
+			"title": "Wybierz motyw",
+			"options": {
+				"light": "Jasny",
+				"dark": "Ciemny",
+				"system": "Systemowy"
+			}
+		}
+	}
+}

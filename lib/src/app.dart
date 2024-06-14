@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '/i18n/translations.g.dart';
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_items_list_view.dart';
-import 'settings/settings_controller.dart';
-import 'settings/settings_view.dart';
+import 'features/sample_feature/presentation/sample_item_details_view.dart';
+import 'features/sample_feature/presentation/sample_items_list_view.dart';
+import 'features/settings/presentation/settings_controller.dart';
+import 'features/settings/presentation/settings_view.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
@@ -42,9 +42,6 @@ class App extends StatelessWidget {
 
           // Use AppLocalizations to configure the correct application title
           // depending on the user's locale.
-          //
-          // The appTitle is defined in .arb files found in the localization
-          // directory.
           onGenerateTitle: (BuildContext context) => l10n.appTitle,
 
           // Define a light and dark color theme. Then, read the user's

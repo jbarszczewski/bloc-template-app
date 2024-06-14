@@ -1,10 +1,10 @@
 import 'package:bloc_template_app/i18n/translations.g.dart';
 import 'package:bloc_template_app/src/app.dart';
-import 'package:bloc_template_app/src/sample_feature/sample_item_details_view.dart';
-import 'package:bloc_template_app/src/sample_feature/sample_items_list_view.dart';
-import 'package:bloc_template_app/src/settings/settings_controller.dart';
-import 'package:bloc_template_app/src/settings/settings_service.dart';
-import 'package:bloc_template_app/src/settings/settings_view.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details_view.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_view.dart';
+import 'package:bloc_template_app/src/features/settings/presentation/settings_controller.dart';
+import 'package:bloc_template_app/src/features/settings/data/settings_service.dart';
+import 'package:bloc_template_app/src/features/settings/presentation/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
