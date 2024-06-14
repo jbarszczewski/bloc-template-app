@@ -42,7 +42,6 @@ class SettingsView extends StatelessWidget {
               optionKey: index,
               isSelected: languageCode == controller.language,
               onChanged: (int? value) {
-                LocaleSettings.setLocaleRaw(languageCode);
                 controller.updateLanguage(languageCode);
               });
         });

@@ -25,6 +25,8 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
 
+  build_runner: ^2.4.11
+  mockito: ^5.4.4
   slang_build_runner: ^3.29.0
 
 flutter:

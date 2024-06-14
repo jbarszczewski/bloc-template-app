@@ -18,7 +18,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = Translations.of(context);
     // Glue the SettingsController to the MaterialApp.
     //
     // The ListenableBuilder Widget listens to the SettingsController for changes.
@@ -42,7 +41,7 @@ class App extends StatelessWidget {
 
           // Use AppLocalizations to configure the correct application title
           // depending on the user's locale.
-          onGenerateTitle: (BuildContext context) => l10n.appTitle,
+          onGenerateTitle: (BuildContext context) => t.appTitle,
 
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
