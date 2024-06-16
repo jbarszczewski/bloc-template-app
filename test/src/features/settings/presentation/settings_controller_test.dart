@@ -1,4 +1,4 @@
-import 'package:bloc_template_app/src/features/settings/data/settings_service.dart';
+import 'package:bloc_template_app/src/features/settings/application/settings_service.dart';
 import 'package:bloc_template_app/src/features/settings/presentation/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '/i18n/translations.g.dart';
-import 'features/sample_feature/presentation/sample_item_details_view.dart';
-import 'features/sample_feature/presentation/sample_items_list_view.dart';
 import 'features/settings/presentation/settings_controller.dart';
-import 'features/settings/presentation/settings_view.dart';
+import 'routing/app_router.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
   final SettingsController settingsController;
+  final _appRouter = AppRouter();
 
-  const App({
+  App({
     super.key,
     required this.settingsController,
   });
@@ -25,7 +24,8 @@ class App extends StatelessWidget {
     return ListenableBuilder(
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return MaterialApp.router(
+          routerConfig: _appRouter.config(),
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -49,25 +49,6 @@ class App extends StatelessWidget {
           theme: ThemeData(),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
-
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemsListView.routeName:
-                  default:
-                    return const SampleItemsListView();
-                }
-              },
-            );
-          },
         );
       },
     );

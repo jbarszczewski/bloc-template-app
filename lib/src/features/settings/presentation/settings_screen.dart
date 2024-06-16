@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../i18n/translations.g.dart';
@@ -8,12 +9,11 @@ import 'settings_controller.dart';
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsView extends StatelessWidget {
-  static const routeName = '/settings';
-
+@RoutePage()
+class SettingsScreen extends StatelessWidget {
   final SettingsController controller;
 
-  const SettingsView({super.key, required this.controller});
+  const SettingsScreen({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
