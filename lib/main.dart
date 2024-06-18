@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'i18n/translations.g.dart';
 import 'src/app.dart';
 import 'src/features/settings/presentation/settings_controller.dart';
-import 'src/features/settings/data/settings_service.dart';
+import 'src/features/settings/application/settings_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

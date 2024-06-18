@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../../../i18n/translations.g.dart';
-import '../../settings/presentation/settings_view.dart';
+import '../../settings/presentation/settings_screen.dart';
 import '../domain/sample_item.dart';
-import 'sample_item_details_view.dart';
+import 'sample_item_details_screen.dart';
 
 /// Displays a list of SampleItems.
-class SampleItemsListView extends StatelessWidget {
+class SampleItemsListScreen extends StatelessWidget {
   static const routeName = '/';
 
   final List<SampleItem> items;
 
-  const SampleItemsListView({
+  const SampleItemsListScreen({
     super.key,
     this.items = const [SampleItem(1), SampleItem(2), SampleItem(3)],
   });
@@ -28,7 +28,7 @@ class SampleItemsListView extends StatelessWidget {
               // Navigate to the settings page. If the user leaves and returns
               // to the app after it has been killed while running in the
               // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
+              Navigator.restorablePushNamed(context, SettingsScreen.routeName);
             },
           ),
         ],
@@ -60,9 +60,8 @@ class SampleItemsListView extends StatelessWidget {
                 // the app after it has been killed while running in the
                 // background, the navigation stack is restored.
                 Navigator.restorablePushNamed(
-                  context,
-                  SampleItemDetailsView.routeName,
-                );
+                    context, SampleItemDetailsScreen.routeName,
+                    arguments: item.id);
               });
         },
       ),

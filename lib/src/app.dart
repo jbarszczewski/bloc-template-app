@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '/i18n/translations.g.dart';
-import 'features/sample_feature/presentation/sample_item_details_view.dart';
-import 'features/sample_feature/presentation/sample_items_list_view.dart';
+import 'features/sample_feature/presentation/sample_item_details_screen.dart';
+import 'features/sample_feature/presentation/sample_items_list_screen.dart';
 import 'features/settings/presentation/settings_controller.dart';
-import 'features/settings/presentation/settings_view.dart';
+import 'features/settings/presentation/settings_screen.dart';
+import 'themes/app_theme.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
@@ -26,6 +27,7 @@ class App extends StatelessWidget {
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -46,8 +48,8 @@ class App extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+          theme: AppTheme.materialLight,
+          darkTheme: AppTheme.materialDark,
           themeMode: settingsController.themeMode,
 
           // Define a function to handle named routes in order to support
@@ -57,13 +59,13 @@ class App extends StatelessWidget {
               settings: routeSettings,
               builder: (BuildContext context) {
                 switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemsListView.routeName:
+                  case SettingsScreen.routeName:
+                    return SettingsScreen(controller: settingsController);
+                  case SampleItemDetailsScreen.routeName:
+                    return const SampleItemDetailsScreen();
+                  case SampleItemsListScreen.routeName:
                   default:
-                    return const SampleItemsListView();
+                    return const SampleItemsListScreen();
                 }
               },
             );

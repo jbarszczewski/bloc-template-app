@@ -10,7 +10,8 @@
 	},
 	"itemDetails": {
 		"title": "Item details",
-		"detailsPlaceholder": "Details for item {itemId}"
+		"detailsPlaceholder": "Details for item {itemId}",
+		"markAsCompletedButton": "Mark as completed"
 	},
 	"settings": {
 		"title": "Settings",

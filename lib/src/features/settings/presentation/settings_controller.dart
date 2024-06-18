@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../i18n/translations.g.dart';
-import '../data/settings_service.dart';
+import '../application/settings_service.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 22 (11 per locale)
+/// Strings: 23 (11 per locale)
 ///
-/// Built on 2024-06-14 at 13:05 UTC
+/// Built on 2024-06-17 at 15:10 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -178,6 +178,7 @@ class _StringsItemDetailsEn {
 	// Translations
 	String get title => 'Item details';
 	String get detailsPlaceholder => 'Details for item {itemId}';
+	String get markAsCompletedButton => 'Mark as completed';
 }
 
 // Path: settings
@@ -313,6 +314,7 @@ extension on Translations {
 			case 'itemsList.sampleItemTitle': return 'Sample item {itemId}';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return 'Details for item {itemId}';
+			case 'itemDetails.markAsCompletedButton': return 'Mark as completed';
 			case 'settings.title': return 'Settings';
 			case 'settings.themes.title': return 'Select a theme';
 			case 'settings.themes.options.light': return 'Light';

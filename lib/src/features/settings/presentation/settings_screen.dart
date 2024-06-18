@@ -1,3 +1,4 @@
+import 'package:bloc_template_app/src/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../i18n/translations.g.dart';
@@ -8,12 +9,12 @@ import 'settings_controller.dart';
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsView extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings';
 
   final SettingsController controller;
 
-  const SettingsView({super.key, required this.controller});
+  const SettingsScreen({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,20 @@ class SettingsView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          children: [_buildThemeSelector(), _buildLanguageSelector()],
+          children: [
+            _buildThemeSelector(),
+            _buildLanguageSelector(),
+            const SizedBox(height: 160),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        context.themeColorsExtension.buttonCornerRadius),
+                  ),
+                ),
+                child: const Text('test button'))
+          ],
         ),
       ),
     );

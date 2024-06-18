@@ -1,10 +1,10 @@
 import 'package:bloc_template_app/i18n/translations.g.dart';
 import 'package:bloc_template_app/src/app.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details_view.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_view.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details_screen.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_screen.dart';
+import 'package:bloc_template_app/src/features/settings/application/settings_service.dart';
 import 'package:bloc_template_app/src/features/settings/presentation/settings_controller.dart';
-import 'package:bloc_template_app/src/features/settings/data/settings_service.dart';
-import 'package:bloc_template_app/src/features/settings/presentation/settings_view.dart';
+import 'package:bloc_template_app/src/features/settings/presentation/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
         child: App(settingsController: SettingsController(SettingsService()))));
 
     // Verify that the SampleItemListView is displayed
-    expect(find.byType(SampleItemsListView), findsOneWidget);
+    expect(find.byType(SampleItemsListScreen), findsOneWidget);
   });
 
   testWidgets('app displays sample item details view', (tester) async {
@@ -30,7 +30,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify that the SampleItemDetailsView is displayed
-    expect(find.byType(SampleItemDetailsView), findsOneWidget);
+    expect(find.byType(SampleItemDetailsScreen), findsOneWidget);
   });
 
   testWidgets('app displays settings view', (tester) async {
@@ -45,6 +45,6 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify that the SettingsView is displayed
-    expect(find.byType(SettingsView), findsOneWidget);
+    expect(find.byType(SettingsScreen), findsOneWidget);
   });
 }
