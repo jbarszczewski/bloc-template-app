@@ -15,12 +15,12 @@ class SettingsController with ChangeNotifier {
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.
   ThemeMode? _themeMode;
-  String? _language;
+  String? _languageCode;
 
   SettingsController(this._settingsService);
 
   // Allow Widgets to read the user's preferred language.
-  String get language => _language ?? 'en';
+  String get language => _languageCode ?? 'en';
 
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode ?? ThemeMode.system;
@@ -30,17 +30,20 @@ class SettingsController with ChangeNotifier {
   /// settings from the service.
   Future<void> loadSettings() async {
     _themeMode = await _settingsService.themeMode();
-    _language = await _settingsService.language();
+    _languageCode = await _settingsService.languageCode();
 
     // Important! Inform listeners a change has occurred.
     notifyListeners();
+
+    // Update the language based on the user's selection.
+    LocaleSettings.setLocaleRaw(_languageCode ?? 'en');
   }
 
   /// Update and persist the language based on the user's selection.
   Future<void> updateLanguage(String newLanguage) async {
-    if (newLanguage == _language) return;
+    if (newLanguage == _languageCode) return;
 
-    _language = newLanguage;
+    _languageCode = newLanguage;
 
     notifyListeners();
     LocaleSettings.setLocaleRaw(newLanguage);

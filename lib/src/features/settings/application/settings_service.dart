@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// A service that stores and retrieves user settings.
-///
-/// By default, this class does not persist user settings. If you'd like to
-/// persist the user settings locally, use the shared_preferences package. If
-/// you'd like to store settings on a web server, use the http package.
 class SettingsService {
+  static const themeModeKey = 'themeMode';
+  static const languageCodeKey = 'languageCode';
+
   /// Loads the User's preferred language from local or remote storage.
-  Future<String> language() async => 'en';
+  Future<String> languageCode() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var languageCode = sharedPreferences.getString(languageCodeKey) ?? 'en';
+    return languageCode;
+  }
 
   /// Loads the User's preferred ThemeMode from local or remote storage.
-  Future<ThemeMode> themeMode() async => ThemeMode.system;
+  Future<ThemeMode> themeMode() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var themeMode = sharedPreferences.getString(themeModeKey);
+    return switch (themeMode) {
+      'dark' => ThemeMode.dark,
+      'light' => ThemeMode.light,
+      _ => ThemeMode.system,
+    };
+  }
 
   /// Persists the user's preferred language to local or remote storage.
   Future<void> updateLanguage(String language) async {
-    // Use the shared_preferences package to persist settings locally or the
-    // http package to persist settings over the network.
+    final sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setString(languageCodeKey, language);
   }
 
   /// Persists the user's preferred ThemeMode to local or remote storage.
   Future<void> updateThemeMode(ThemeMode theme) async {
-    // Use the shared_preferences package to persist settings locally or the
-    // http package to persist settings over the network.
+    final sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.setString(themeModeKey, theme.name);
   }
 }
