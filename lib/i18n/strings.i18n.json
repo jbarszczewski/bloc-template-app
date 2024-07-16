@@ -6,7 +6,8 @@
 	"appTitle": "Bloc Template",
 	"itemsList": {
 		"title": "Items",
-		"sampleItemTitle": "Sample item {itemId}"
+		"sampleItemTitle": "Sample item {itemId}",
+		"refreshButton": "Refresh"
 	},
 	"itemDetails": {
 		"title": "Item details",

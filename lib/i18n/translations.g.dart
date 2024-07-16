@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 23 (11 per locale)
+/// Strings: 24 (12 per locale)
 ///
-/// Built on 2024-06-17 at 15:12 UTC
+/// Built on 2024-07-15 at 15:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -167,6 +167,7 @@ class _TranslationsItemsListEn {
 	// Translations
 	String get title => 'Items';
 	String sampleItemTitle({required Object itemId}) => 'Sample item ${itemId}';
+	String get refreshButton => 'Refresh';
 }
 
 // Path: itemDetails
@@ -314,6 +315,7 @@ extension on Translations {
 			case 'appTitle': return 'Bloc Template';
 			case 'itemsList.title': return 'Items';
 			case 'itemsList.sampleItemTitle': return ({required Object itemId}) => 'Sample item ${itemId}';
+			case 'itemsList.refreshButton': return 'Refresh';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return ({required Object itemId}) => 'Details for item ${itemId}';
 			case 'itemDetails.markAsCompletedButton': return 'Mark as completed';

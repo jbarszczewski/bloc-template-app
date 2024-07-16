@@ -1,0 +1,44 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug local mode",
+			"request": "launch",
+			"type": "dart",
+			"args": [
+				"--dart-define-from-file=env.local.json"
+			]
+		},
+		{
+			"name": "Debug staging mode",
+			"request": "launch",
+			"type": "dart",
+			"args": [
+				"--dart-define-from-file=env.staging.json"
+			]
+		},
+		{
+			"name": "Debug production mode",
+			"request": "launch",
+			"type": "dart",
+			"args": [
+				"--dart-define-from-file=env.prod.json"
+			]
+		},
+		{
+			"name": "Launch (profile mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile"
+		},
+		{
+			"name": "Launch (release mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "release"
+		}
+	]
+}

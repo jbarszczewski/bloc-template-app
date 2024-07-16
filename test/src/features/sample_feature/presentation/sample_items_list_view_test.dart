@@ -5,10 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('items list view has title from translations', (tester) async {
     // Add test code here.
-    await tester.pumpWidget(const MaterialApp(
-        home: SampleItemsListScreen(
-      items: [],
-    )));
+    await tester.pumpWidget(const MaterialApp(home: SampleItemsListScreen()));
     expect(find.text('Items'), findsOneWidget);
   });
 }

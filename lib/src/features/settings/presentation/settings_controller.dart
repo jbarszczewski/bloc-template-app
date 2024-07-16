@@ -45,9 +45,10 @@ class SettingsController with ChangeNotifier {
 
     _languageCode = newLanguage;
 
-    notifyListeners();
     LocaleSettings.setLocaleRaw(newLanguage);
     await _settingsService.updateLanguage(newLanguage);
+
+    notifyListeners();
   }
 
   /// Update and persist the ThemeMode based on the user's selection.
@@ -60,11 +61,11 @@ class SettingsController with ChangeNotifier {
     // Otherwise, store the new ThemeMode in memory
     _themeMode = newThemeMode;
 
-    // Important! Inform listeners a change has occurred.
-    notifyListeners();
-
     // Persist the changes to a local database or the internet using the
     // SettingService.
     await _settingsService.updateThemeMode(newThemeMode);
+
+    // Important! Inform listeners a change has occurred.
+    notifyListeners();
   }
 }
