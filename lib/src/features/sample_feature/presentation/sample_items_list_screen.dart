@@ -5,7 +5,6 @@ import '../../../../i18n/translations.g.dart';
 import '../../settings/presentation/settings_screen.dart';
 import '../domain/sample_item.dart';
 import 'bloc/sample_items_list_bloc.dart';
-import 'cubit/sample_items_cubit_cubit.dart';
 import 'sample_item_details_screen.dart';
 
 /// Displays a list of SampleItems.
@@ -33,12 +32,6 @@ class SampleItemsListScreen extends StatelessWidget {
           ],
         ),
 
-        // To work with lists that may contain a large number of items, it’s best
-        // to use the ListView.builder constructor.
-        //
-        // In contrast to the default ListView constructor, which requires
-        // building all Widgets up front, the ListView.builder constructor lazily
-        // builds Widgets as they’re scrolled into view.
         body: BlocBuilder<SampleItemsListBloc, SampleItemsListState>(
           builder: (context, state) => state.when(
             initial: () {

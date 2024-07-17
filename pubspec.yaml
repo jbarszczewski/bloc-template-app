@@ -30,6 +30,7 @@ dev_dependencies:
   freezed: ^2.5.2
   mocktail: ^1.0.4
   slang_build_runner: ^3.29.0
+  bloc_test: ^9.1.7
 
 flutter:
   uses-material-design: true
