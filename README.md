@@ -16,6 +16,20 @@ Watch mode: dart run slang watch
 
 Analyze: dart run slang analyze --full
 
+### IMPORTANT:
+
+Using `translate_var` does not rebuild widget when translation change. To make
+sure all pages are rebuild when switching language use this in `build` method:
+
+```
+final l10n = Translations.of(context);
+or
+context.l10n
+```
+
+See:
+[https://pub.dev/packages/slang#-changing-locale](https://pub.dev/packages/slang#-changing-locale)
+
 ### iOS Config
 
 Add the supported locales to your Info.plist file.

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 24 (12 per locale)
+/// Strings: 29 (14 per locale)
 ///
-/// Built on 2024-07-15 at 15:57 UTC
+/// Built on 2024-07-19 at 09:05 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -42,13 +42,13 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 /// Method A: Simple
 ///
 /// No rebuild after locale change.
-/// Translation happens during initialization of the widget (call of t).
+/// Translation happens during initialization of the widget (call of l10n).
 /// Configurable via 'translate_var'.
 ///
 /// Usage:
-/// String a = t.someKey.anotherKey;
-/// String b = t['someKey.anotherKey']; // Only for edge cases!
-Translations get t => LocaleSettings.instance.currentTranslations;
+/// String a = l10n.someKey.anotherKey;
+/// String b = l10n['someKey.anotherKey']; // Only for edge cases!
+Translations get l10n => LocaleSettings.instance.currentTranslations;
 
 /// Method B: Advanced
 ///
@@ -62,9 +62,9 @@ Translations get t => LocaleSettings.instance.currentTranslations;
 /// );
 ///
 /// Step 2:
-/// final t = Translations.of(context); // Get t variable.
-/// String a = t.someKey.anotherKey; // Use t variable.
-/// String b = t['someKey.anotherKey']; // Only for edge cases!
+/// final l10n = Translations.of(context); // Get l10n variable.
+/// String a = l10n.someKey.anotherKey; // Use l10n variable.
+/// String b = l10n['someKey.anotherKey']; // Only for edge cases!
 class TranslationProvider extends BaseTranslationProvider<AppLocale, Translations> {
 	TranslationProvider({required super.child}) : super(settings: LocaleSettings.instance);
 
@@ -75,9 +75,9 @@ class TranslationProvider extends BaseTranslationProvider<AppLocale, Translation
 /// Configurable via 'translate_var'.
 ///
 /// Usage (e.g. in a widget's build method):
-/// context.t.someKey.anotherKey
+/// context.l10n.someKey.anotherKey
 extension BuildContextTranslationsExtension on BuildContext {
-	Translations get t => TranslationProvider.of(this).translations;
+	Translations get l10n => TranslationProvider.of(this).translations;
 }
 
 /// Manages all translation instances and the current locale
@@ -123,7 +123,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// Returns the current translations of the given [context].
 	///
 	/// Usage:
-	/// final t = Translations.of(context);
+	/// final l10n = Translations.of(context);
 	static Translations of(BuildContext context) => InheritedLocaleData.of<AppLocale, Translations>(context).translations;
 
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -153,9 +153,21 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 		'pl': '🇵🇱 Polski',
 	};
 	String get appTitle => 'Bloc Template';
+	late final _TranslationsNavigationEn navigation = _TranslationsNavigationEn._(_root);
 	late final _TranslationsItemsListEn itemsList = _TranslationsItemsListEn._(_root);
 	late final _TranslationsItemDetailsEn itemDetails = _TranslationsItemDetailsEn._(_root);
 	late final _TranslationsSettingsEn settings = _TranslationsSettingsEn._(_root);
+}
+
+// Path: navigation
+class _TranslationsNavigationEn {
+	_TranslationsNavigationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get home => 'Home';
+	String get settings => 'Settings';
 }
 
 // Path: itemsList
@@ -167,7 +179,7 @@ class _TranslationsItemsListEn {
 	// Translations
 	String get title => 'Items';
 	String sampleItemTitle({required Object itemId}) => 'Sample item ${itemId}';
-	String get refreshButton => 'Refresh';
+	String get refreshButton => 'Refresh list';
 }
 
 // Path: itemDetails
@@ -243,9 +255,21 @@ class _TranslationsPl extends Translations {
 
 	// Translations
 	@override String get appTitle => 'Bloc Template (pl)';
+	@override late final _TranslationsNavigationPl navigation = _TranslationsNavigationPl._(_root);
 	@override late final _TranslationsItemsListPl itemsList = _TranslationsItemsListPl._(_root);
 	@override late final _TranslationsItemDetailsPl itemDetails = _TranslationsItemDetailsPl._(_root);
 	@override late final _TranslationsSettingsPl settings = _TranslationsSettingsPl._(_root);
+}
+
+// Path: navigation
+class _TranslationsNavigationPl extends _TranslationsNavigationEn {
+	_TranslationsNavigationPl._(_TranslationsPl root) : this._root = root, super._(root);
+
+	@override final _TranslationsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Strona glowna';
+	@override String get settings => 'Ustawienia';
 }
 
 // Path: itemsList
@@ -257,6 +281,7 @@ class _TranslationsItemsListPl extends _TranslationsItemsListEn {
 	// Translations
 	@override String get title => 'Pozycje';
 	@override String sampleItemTitle({required Object itemId}) => 'Przykladowa pozycja ${itemId}';
+	@override String get refreshButton => 'Odswiez';
 }
 
 // Path: itemDetails
@@ -313,9 +338,11 @@ extension on Translations {
 			case 'locales.en': return '🇬🇧 English (UK)';
 			case 'locales.pl': return '🇵🇱 Polski';
 			case 'appTitle': return 'Bloc Template';
+			case 'navigation.home': return 'Home';
+			case 'navigation.settings': return 'Settings';
 			case 'itemsList.title': return 'Items';
 			case 'itemsList.sampleItemTitle': return ({required Object itemId}) => 'Sample item ${itemId}';
-			case 'itemsList.refreshButton': return 'Refresh';
+			case 'itemsList.refreshButton': return 'Refresh list';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return ({required Object itemId}) => 'Details for item ${itemId}';
 			case 'itemDetails.markAsCompletedButton': return 'Mark as completed';
@@ -333,8 +360,11 @@ extension on _TranslationsPl {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'appTitle': return 'Bloc Template (pl)';
+			case 'navigation.home': return 'Strona glowna';
+			case 'navigation.settings': return 'Ustawienia';
 			case 'itemsList.title': return 'Pozycje';
 			case 'itemsList.sampleItemTitle': return ({required Object itemId}) => 'Przykladowa pozycja ${itemId}';
+			case 'itemsList.refreshButton': return 'Odswiez';
 			case 'itemDetails.title': return 'Szczegoly';
 			case 'itemDetails.detailsPlaceholder': return ({required Object itemId}) => 'Szczegoly pozycji ${itemId}';
 			case 'settings.title': return 'Ustawienia';

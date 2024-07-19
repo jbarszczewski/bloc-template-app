@@ -4,10 +4,14 @@
 		"pl": "🇵🇱 Polski"
 	},
 	"appTitle": "Bloc Template",
+	"navigation": {
+		"home": "Home",
+		"settings": "Settings"
+	},
 	"itemsList": {
 		"title": "Items",
 		"sampleItemTitle": "Sample item {itemId}",
-		"refreshButton": "Refresh"
+		"refreshButton": "Refresh list"
 	},
 	"itemDetails": {
 		"title": "Item details",

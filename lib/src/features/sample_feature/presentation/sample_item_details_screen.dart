@@ -4,28 +4,23 @@ import '../../../../i18n/translations.g.dart';
 
 /// Displays detailed information about a SampleItem.
 class SampleItemDetailsScreen extends StatelessWidget {
-  static const routeName = '/sample_item';
+  final String id;
 
-  const SampleItemDetailsScreen({super.key});
+  const SampleItemDetailsScreen({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    final itemId = ModalRoute.of(context)!.settings.arguments as int;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(t.itemDetails.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(t.itemDetails.detailsPlaceholder(itemId: itemId)),
-            ElevatedButton(
-              child: Text(t.itemDetails.markAsCompletedButton),
-              onPressed: () {},
-            )
-          ],
-        ),
+    final itemId = int.tryParse(id) ?? 0;
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(context.l10n.itemDetails.detailsPlaceholder(itemId: itemId)),
+          ElevatedButton(
+            child: Text(context.l10n.itemDetails.markAsCompletedButton),
+            onPressed: () {},
+          )
+        ],
       ),
     );
   }

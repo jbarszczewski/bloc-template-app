@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 23 (11 per locale)
+/// Strings: 25 (12 per locale)
 ///
-/// Built on 2024-07-15 at 12:43 UTC
+/// Built on 2024-07-18 at 12:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -167,6 +167,7 @@ class _StringsItemsListEn {
 	// Translations
 	String get title => 'Items';
 	String get sampleItemTitle => 'Sample item {itemId}';
+	String get refreshButton => 'Refresh list';
 }
 
 // Path: itemDetails
@@ -254,6 +255,7 @@ class _StringsItemsListPl implements _StringsItemsListEn {
 	// Translations
 	@override String get title => 'Pozycje';
 	@override String get sampleItemTitle => 'Przykladowa pozycja {itemId}';
+	@override String get refreshButton => 'Odswiez';
 }
 
 // Path: itemDetails
@@ -312,6 +314,7 @@ extension on Translations {
 			case 'appTitle': return 'Bloc Template';
 			case 'itemsList.title': return 'Items';
 			case 'itemsList.sampleItemTitle': return 'Sample item {itemId}';
+			case 'itemsList.refreshButton': return 'Refresh list';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return 'Details for item {itemId}';
 			case 'itemDetails.markAsCompletedButton': return 'Mark as completed';
@@ -331,6 +334,7 @@ extension on _StringsPl {
 			case 'appTitle': return 'Bloc Template (pl)';
 			case 'itemsList.title': return 'Pozycje';
 			case 'itemsList.sampleItemTitle': return 'Przykladowa pozycja {itemId}';
+			case 'itemsList.refreshButton': return 'Odswiez';
 			case 'itemDetails.title': return 'Szczegoly';
 			case 'itemDetails.detailsPlaceholder': return 'Szczegoly pozycji {itemId}';
 			case 'settings.title': return 'Ustawienia';

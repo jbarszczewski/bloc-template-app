@@ -1,8 +1,13 @@
 {
 	"appTitle": "Bloc Template (pl)",
+	"navigation": {
+		"home": "Strona glowna",
+		"settings": "Ustawienia"
+	},
 	"itemsList": {
 		"title": "Pozycje",
-		"sampleItemTitle": "Przykladowa pozycja {itemId}"
+		"sampleItemTitle": "Przykladowa pozycja {itemId}",
+		"refreshButton": "Odswiez"
 	},
 	"itemDetails": {
 		"title": "Szczegoly",
