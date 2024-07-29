@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../i18n/translations.g.dart';
-import '../../../shared/widgets/option_button.dart';
-import '../../../themes/app_theme.dart';
+import '../../../core/shared/widgets/option_button.dart';
+import '../../../core/themes/app_theme.dart';
 import 'cubit/app_settings_cubit.dart';
 
 /// Displays the various settings that can be customized by the user.

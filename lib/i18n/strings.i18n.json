@@ -16,7 +16,7 @@
 	"itemDetails": {
 		"title": "Item details",
 		"detailsPlaceholder": "Details for item {itemId}",
-		"markAsCompletedButton": "Mark as completed"
+		"deleteButton": "Delete this"
 	},
 	"settings": {
 		"title": "Settings",

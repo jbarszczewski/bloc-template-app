@@ -1,10 +1,12 @@
-import 'package:bloc_template_app/src/features/sample_feature/data/sample_items_repository.dart';
-import 'package:bloc_template_app/src/features/settings/application/settings_service.dart';
+import 'package:bloc_template_app/src/core/database/database.dart';
+import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
+import 'package:bloc_template_app/src/features/settings/domain/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'i18n/translations.g.dart';
 import 'src/app.dart';
+import 'src/features/sample_feature/data/sample_items_local_datasource.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,12 +17,11 @@ void main() async {
       url: const String.fromEnvironment('SUPABASE_URL'),
       anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'));
 
-  // Run the app and pass in the SettingsController. The app listens to the
-  // SettingsController for changes, then passes it further down to the
-  // SettingsView.
   runApp(TranslationProvider(
       child: App(
     settingsService: SettingsService(),
-    sampleItemsRepository: SampleItemsRepository(),
+    sampleItemsRepository: SampleItemsRepository(
+        localDataSource:
+            SampleItemsLocalDataSource(database: AppDatabase('dev'))),
   )));
 }

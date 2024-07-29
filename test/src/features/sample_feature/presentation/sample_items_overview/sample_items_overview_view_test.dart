@@ -1,7 +1,7 @@
 import 'package:bloc_template_app/i18n/translations.g.dart';
-import 'package:bloc_template_app/src/features/sample_feature/domain/sample_item.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/bloc/sample_items_list_bloc.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_screen.dart';
+import 'package:bloc_template_app/src/features/sample_feature/domain/models/sample_item_viewmodel.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_overview/bloc/sample_items_overview_bloc.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_overview/sample_items_overview_screen.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,43 +9,43 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() {
-  late MockSampleItemsListBloc mockBloc;
+  late MockSampleItemsOverviewBloc mockBloc;
   late MockNavigatorObserver mockObserver;
 
   setUp(() {
-    mockBloc = MockSampleItemsListBloc();
+    mockBloc = MockSampleItemsOverviewBloc();
     mockObserver = MockNavigatorObserver();
   });
 
   Widget createWidgetUnderTest() {
     return TranslationProvider(
       child: MaterialApp(
-        home: BlocProvider<SampleItemsListBloc>.value(
+        home: BlocProvider<SampleItemsOverviewBloc>.value(
           value: mockBloc,
-          child: const Scaffold(body: SampleItemsListScreen()),
+          child: const Scaffold(body: SampleItemsOverviewScreen()),
         ),
         navigatorObservers: [mockObserver],
       ),
     );
   }
 
-  group('SampleItemsListScreen', () {
+  group('SampleItemsOverviewScreen', () {
     testWidgets('renders CircularProgressIndicator when state is initial',
         (WidgetTester tester) async {
       when(() => mockBloc.state)
-          .thenReturn(const SampleItemsListState.initial());
+          .thenReturn(const SampleItemsOverviewState.initial());
 
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
-      verify(() => mockBloc.add(const SampleItemsListEvent.loadAll()))
+      verify(() => mockBloc.add(const SampleItemsOverviewEvent.subscribe()))
           .called(1);
     });
 
     testWidgets('renders CircularProgressIndicator when state is loading',
         (WidgetTester tester) async {
       when(() => mockBloc.state)
-          .thenReturn(const SampleItemsListState.loading());
+          .thenReturn(const SampleItemsOverviewState.loading());
 
       await tester.pumpWidget(createWidgetUnderTest());
 
@@ -54,7 +54,8 @@ void main() {
 
     testWidgets('renders error message when state is error',
         (WidgetTester tester) async {
-      when(() => mockBloc.state).thenReturn(const SampleItemsListState.error());
+      when(() => mockBloc.state)
+          .thenReturn(const SampleItemsOverviewState.error());
 
       await tester.pumpWidget(createWidgetUnderTest());
 
@@ -64,10 +65,13 @@ void main() {
     testWidgets('renders list of items when state is loaded',
         (WidgetTester tester) async {
       final items = [
-        const SampleItem(id: 1, name: 'Item 1', content: 'Content 1'),
-        const SampleItem(id: 2, name: 'Item 2', content: 'Content 2'),
+        const SampleItemViewModel(
+            id: '1', name: 'Item 1', content: 'Content 1'),
+        const SampleItemViewModel(
+            id: '2', name: 'Item 2', content: 'Content 2'),
       ];
-      when(() => mockBloc.state).thenReturn(SampleItemsListState.loaded(items));
+      when(() => mockBloc.state)
+          .thenReturn(SampleItemsOverviewState.success(items));
 
       await tester.pumpWidget(createWidgetUnderTest());
 
@@ -81,6 +85,6 @@ void main() {
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 // Mock classes
-class MockSampleItemsListBloc
-    extends MockBloc<SampleItemsListEvent, SampleItemsListState>
-    implements SampleItemsListBloc {}
+class MockSampleItemsOverviewBloc
+    extends MockBloc<SampleItemsOverviewEvent, SampleItemsOverviewState>
+    implements SampleItemsOverviewBloc {}

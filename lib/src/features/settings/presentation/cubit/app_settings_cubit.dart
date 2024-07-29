@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../i18n/translations.g.dart';
-import '../../application/settings_service.dart';
-import '../../domain/app_settings.dart';
+import '../../domain/settings_service.dart';
+import '../../domain/models/app_settings.dart';
 
 part 'app_settings_cubit.freezed.dart';
 part 'app_settings_state.dart';

@@ -1,10 +1,10 @@
 import 'package:bloc_template_app/i18n/translations.g.dart';
 import 'package:bloc_template_app/src/app.dart';
-import 'package:bloc_template_app/src/features/sample_feature/data/sample_items_repository.dart';
-import 'package:bloc_template_app/src/features/sample_feature/domain/sample_item.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details_screen.dart';
-import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_list_screen.dart';
-import 'package:bloc_template_app/src/features/settings/application/settings_service.dart';
+import 'package:bloc_template_app/src/features/sample_feature/domain/models/sample_item_viewmodel.dart';
+import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details/sample_item_details_screen.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_overview/sample_items_overview_screen.dart';
+import 'package:bloc_template_app/src/features/settings/domain/settings_service.dart';
 import 'package:bloc_template_app/src/features/settings/presentation/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,8 +25,16 @@ void main() {
           .thenAnswer((_) async => language);
 
       mockItemsRepository = MockSampleItemsRepository();
-      when(() => mockItemsRepository.fetchSampleItems())
-          .thenAnswer((_) async => [const SampleItem(id: 1, name: 'Item 1')]);
+      when(() => mockItemsRepository.watchSampleItems())
+          .thenAnswer((_) => Stream.value([
+                const SampleItemViewModel(
+                    id: '1', name: 'Item 1', content: 'This is item 1'),
+                const SampleItemViewModel(id: '2', name: 'Item 2'),
+                const SampleItemViewModel(
+                    id: '3', name: 'Item 3', content: 'This is item 3'),
+              ]));
+      when(() => mockItemsRepository.getSampleItemById('1')).thenAnswer(
+          (_) async => const SampleItemViewModel(id: '1', name: 'Item 1'));
     });
     testWidgets('displays sample items list view', (tester) async {
       // Build the MyApp widget
@@ -36,7 +44,7 @@ void main() {
               sampleItemsRepository: mockItemsRepository)));
       await tester.pumpAndSettle();
       // Verify that the SampleItemListView is displayed
-      expect(find.byType(SampleItemsListScreen), findsOneWidget);
+      expect(find.byType(SampleItemsOverviewScreen), findsOneWidget);
     });
 
     testWidgets('displays sample item details view', (tester) async {

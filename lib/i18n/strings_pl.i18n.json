@@ -11,7 +11,8 @@
 	},
 	"itemDetails": {
 		"title": "Szczegoly",
-		"detailsPlaceholder": "Szczegoly pozycji {itemId}"
+		"detailsPlaceholder": "Szczegoly pozycji {itemId}",
+		"deleteButton": "Usun to"
 	},
 	"settings": {
 		"title": "Ustawienia",

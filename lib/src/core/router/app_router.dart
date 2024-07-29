@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/sample_feature/presentation/sample_item_details_screen.dart';
-import '../features/sample_feature/presentation/sample_items_list_screen.dart';
-import '../features/settings/presentation/settings_screen.dart';
+import '../../features/sample_feature/presentation/sample_item_details/sample_item_details_screen.dart';
+import '../../features/sample_feature/presentation/sample_items_overview/sample_items_overview_screen.dart';
+import '../../features/settings/presentation/settings_screen.dart';
 import 'scaffold_with_nav_bar.dart';
 
 // GoRouter configuration
@@ -30,7 +30,8 @@ GoRouter get appRouter => GoRouter(
                 GoRoute(
                     name: AppRoutes.home.name,
                     path: '/',
-                    builder: (context, state) => const SampleItemsListScreen(),
+                    builder: (context, state) =>
+                        const SampleItemsOverviewScreen(),
                     routes: [
                       GoRoute(
                         name: AppRoutes.details.name,

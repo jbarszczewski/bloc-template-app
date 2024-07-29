@@ -1,4 +1,4 @@
-import 'package:bloc_template_app/src/themes/app_palette.dart';
+import 'package:bloc_template_app/src/core/themes/app_palette.dart';
 import 'package:flutter/material.dart';
 
 import 'colors_extension.dart';

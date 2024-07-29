@@ -1,14 +1,15 @@
-import 'package:bloc_template_app/src/features/sample_feature/data/sample_items_repository.dart';
-import 'package:bloc_template_app/src/router/app_router.dart';
+import 'package:bloc_template_app/src/core/router/app_router.dart';
+import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
+import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details/cubit/sample_item_details_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '/i18n/translations.g.dart';
-import 'features/sample_feature/presentation/bloc/sample_items_list_bloc.dart';
-import 'features/settings/application/settings_service.dart';
+import 'core/themes/app_theme.dart';
+import 'features/sample_feature/presentation/sample_items_overview/bloc/sample_items_overview_bloc.dart';
+import 'features/settings/domain/settings_service.dart';
 import 'features/settings/presentation/cubit/app_settings_cubit.dart';
-import 'themes/app_theme.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
@@ -32,8 +33,10 @@ class App extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<SampleItemsListBloc>(
-              create: (_) => SampleItemsListBloc(_sampleItemsRepository)),
+          BlocProvider<SampleItemsOverviewBloc>(
+              create: (_) => SampleItemsOverviewBloc(_sampleItemsRepository)),
+          BlocProvider<SampleItemDetailsCubit>(
+              create: (_) => SampleItemDetailsCubit(_sampleItemsRepository)),
           BlocProvider<AppSettingsCubit>(
             create: (_) => AppSettingsCubit(_settingsService)..initialize(),
           ),

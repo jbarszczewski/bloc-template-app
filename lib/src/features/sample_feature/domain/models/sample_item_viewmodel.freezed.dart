@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sample_item.dart';
+part of 'sample_item_viewmodel.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SampleItem {
-  int get id => throw _privateConstructorUsedError;
+mixin _$SampleItemViewModel {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SampleItemCopyWith<SampleItem> get copyWith =>
+  $SampleItemViewModelCopyWith<SampleItemViewModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SampleItemCopyWith<$Res> {
-  factory $SampleItemCopyWith(
-          SampleItem value, $Res Function(SampleItem) then) =
-      _$SampleItemCopyWithImpl<$Res, SampleItem>;
+abstract class $SampleItemViewModelCopyWith<$Res> {
+  factory $SampleItemViewModelCopyWith(
+          SampleItemViewModel value, $Res Function(SampleItemViewModel) then) =
+      _$SampleItemViewModelCopyWithImpl<$Res, SampleItemViewModel>;
   @useResult
-  $Res call({int id, String name, String? content});
+  $Res call({String id, String name, String? content});
 }
 
 /// @nodoc
-class _$SampleItemCopyWithImpl<$Res, $Val extends SampleItem>
-    implements $SampleItemCopyWith<$Res> {
-  _$SampleItemCopyWithImpl(this._value, this._then);
+class _$SampleItemViewModelCopyWithImpl<$Res, $Val extends SampleItemViewModel>
+    implements $SampleItemViewModelCopyWith<$Res> {
+  _$SampleItemViewModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -55,7 +55,7 @@ class _$SampleItemCopyWithImpl<$Res, $Val extends SampleItem>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -70,18 +70,18 @@ class _$SampleItemCopyWithImpl<$Res, $Val extends SampleItem>
 
 /// @nodoc
 abstract class _$$SampleItemImplCopyWith<$Res>
-    implements $SampleItemCopyWith<$Res> {
+    implements $SampleItemViewModelCopyWith<$Res> {
   factory _$$SampleItemImplCopyWith(
           _$SampleItemImpl value, $Res Function(_$SampleItemImpl) then) =
       __$$SampleItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String? content});
+  $Res call({String id, String name, String? content});
 }
 
 /// @nodoc
 class __$$SampleItemImplCopyWithImpl<$Res>
-    extends _$SampleItemCopyWithImpl<$Res, _$SampleItemImpl>
+    extends _$SampleItemViewModelCopyWithImpl<$Res, _$SampleItemImpl>
     implements _$$SampleItemImplCopyWith<$Res> {
   __$$SampleItemImplCopyWithImpl(
       _$SampleItemImpl _value, $Res Function(_$SampleItemImpl) _then)
@@ -98,7 +98,7 @@ class __$$SampleItemImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class _$SampleItemImpl implements _SampleItem {
   const _$SampleItemImpl({required this.id, required this.name, this.content});
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -125,7 +125,7 @@ class _$SampleItemImpl implements _SampleItem {
 
   @override
   String toString() {
-    return 'SampleItem(id: $id, name: $name, content: $content)';
+    return 'SampleItemViewModel(id: $id, name: $name, content: $content)';
   }
 
   @override
@@ -148,14 +148,14 @@ class _$SampleItemImpl implements _SampleItem {
       __$$SampleItemImplCopyWithImpl<_$SampleItemImpl>(this, _$identity);
 }
 
-abstract class _SampleItem implements SampleItem {
+abstract class _SampleItem implements SampleItemViewModel {
   const factory _SampleItem(
-      {required final int id,
+      {required final String id,
       required final String name,
       final String? content}) = _$SampleItemImpl;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 25 (12 per locale)
+/// Strings: 29 (14 per locale)
 ///
-/// Built on 2024-07-18 at 12:49 UTC
+/// Built on 2024-07-29 at 08:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -153,9 +153,21 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 		'pl': '🇵🇱 Polski',
 	};
 	String get appTitle => 'Bloc Template';
+	late final _StringsNavigationEn navigation = _StringsNavigationEn._(_root);
 	late final _StringsItemsListEn itemsList = _StringsItemsListEn._(_root);
 	late final _StringsItemDetailsEn itemDetails = _StringsItemDetailsEn._(_root);
 	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
+}
+
+// Path: navigation
+class _StringsNavigationEn {
+	_StringsNavigationEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get home => 'Home';
+	String get settings => 'Settings';
 }
 
 // Path: itemsList
@@ -179,7 +191,7 @@ class _StringsItemDetailsEn {
 	// Translations
 	String get title => 'Item details';
 	String get detailsPlaceholder => 'Details for item {itemId}';
-	String get markAsCompletedButton => 'Mark as completed';
+	String get deleteButton => 'Mark as completed';
 }
 
 // Path: settings
@@ -241,9 +253,21 @@ class _StringsPl implements Translations {
 
 	// Translations
 	@override String get appTitle => 'Bloc Template (pl)';
+	@override late final _StringsNavigationPl navigation = _StringsNavigationPl._(_root);
 	@override late final _StringsItemsListPl itemsList = _StringsItemsListPl._(_root);
 	@override late final _StringsItemDetailsPl itemDetails = _StringsItemDetailsPl._(_root);
 	@override late final _StringsSettingsPl settings = _StringsSettingsPl._(_root);
+}
+
+// Path: navigation
+class _StringsNavigationPl implements _StringsNavigationEn {
+	_StringsNavigationPl._(this._root);
+
+	@override final _StringsPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Strona glowna';
+	@override String get settings => 'Ustawienia';
 }
 
 // Path: itemsList
@@ -312,12 +336,14 @@ extension on Translations {
 			case 'locales.en': return '🇬🇧 English (UK)';
 			case 'locales.pl': return '🇵🇱 Polski';
 			case 'appTitle': return 'Bloc Template';
+			case 'navigation.home': return 'Home';
+			case 'navigation.settings': return 'Settings';
 			case 'itemsList.title': return 'Items';
 			case 'itemsList.sampleItemTitle': return 'Sample item {itemId}';
 			case 'itemsList.refreshButton': return 'Refresh list';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return 'Details for item {itemId}';
-			case 'itemDetails.markAsCompletedButton': return 'Mark as completed';
+			case 'itemDetails.deleteButton': return 'Mark as completed';
 			case 'settings.title': return 'Settings';
 			case 'settings.themes.title': return 'Select a theme';
 			case 'settings.themes.options.light': return 'Light';
@@ -332,6 +358,8 @@ extension on _StringsPl {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'appTitle': return 'Bloc Template (pl)';
+			case 'navigation.home': return 'Strona glowna';
+			case 'navigation.settings': return 'Ustawienia';
 			case 'itemsList.title': return 'Pozycje';
 			case 'itemsList.sampleItemTitle': return 'Przykladowa pozycja {itemId}';
 			case 'itemsList.refreshButton': return 'Odswiez';
