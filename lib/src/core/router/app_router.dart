@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/sample_feature/presentation/sample_item_details/sample_item_details_screen.dart';
 import '../../features/sample_feature/presentation/sample_items_overview/sample_items_overview_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
+import '../shared/widgets/assets.dart';
 import 'scaffold_with_nav_bar.dart';
 
 // GoRouter configuration
@@ -22,6 +23,12 @@ GoRouter get appRouter => GoRouter(
                               onPressed: () => context.pop(),
                             )
                           : null,
+                      actions: [
+                        IconButton(
+                          icon: Assets.accountIcon,
+                          onPressed: () => context.go(AppRoutes.settings.name),
+                        )
+                      ],
                     );
                   });
             },

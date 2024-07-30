@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 29 (14 per locale)
+/// Strings: 30 (15 per locale)
 ///
-/// Built on 2024-07-29 at 08:23 UTC
+/// Built on 2024-07-29 at 15:07 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -191,7 +191,7 @@ class _StringsItemDetailsEn {
 	// Translations
 	String get title => 'Item details';
 	String get detailsPlaceholder => 'Details for item {itemId}';
-	String get deleteButton => 'Mark as completed';
+	String get deleteButton => 'Delete this';
 }
 
 // Path: settings
@@ -291,6 +291,7 @@ class _StringsItemDetailsPl implements _StringsItemDetailsEn {
 	// Translations
 	@override String get title => 'Szczegoly';
 	@override String get detailsPlaceholder => 'Szczegoly pozycji {itemId}';
+	@override String get deleteButton => 'Usun to';
 }
 
 // Path: settings
@@ -343,7 +344,7 @@ extension on Translations {
 			case 'itemsList.refreshButton': return 'Refresh list';
 			case 'itemDetails.title': return 'Item details';
 			case 'itemDetails.detailsPlaceholder': return 'Details for item {itemId}';
-			case 'itemDetails.deleteButton': return 'Mark as completed';
+			case 'itemDetails.deleteButton': return 'Delete this';
 			case 'settings.title': return 'Settings';
 			case 'settings.themes.title': return 'Select a theme';
 			case 'settings.themes.options.light': return 'Light';
@@ -365,6 +366,7 @@ extension on _StringsPl {
 			case 'itemsList.refreshButton': return 'Odswiez';
 			case 'itemDetails.title': return 'Szczegoly';
 			case 'itemDetails.detailsPlaceholder': return 'Szczegoly pozycji {itemId}';
+			case 'itemDetails.deleteButton': return 'Usun to';
 			case 'settings.title': return 'Ustawienia';
 			case 'settings.themes.title': return 'Wybierz motyw';
 			case 'settings.themes.options.light': return 'Jasny';

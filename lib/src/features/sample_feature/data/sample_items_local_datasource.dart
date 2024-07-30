@@ -1,11 +1,11 @@
 import 'package:drift/drift.dart';
 
-import '../../../core/database/database.dart';
+import '../../../core/local_database/database.dart';
 
 class SampleItemsLocalDataSource {
-  final AppDatabase _database;
+  final LocalDatabase _database;
 
-  SampleItemsLocalDataSource({required AppDatabase database})
+  SampleItemsLocalDataSource({required LocalDatabase database})
       : _database = database;
 
   Future<void> addSampleItem(String id, String name, String? content) async {

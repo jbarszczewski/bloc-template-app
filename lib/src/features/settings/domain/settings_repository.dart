@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// A service that stores and retrieves user settings.
-class SettingsService {
+class SettingsRepository {
   static const themeModeKey = 'themeMode';
   static const languageCodeKey = 'languageCode';
 

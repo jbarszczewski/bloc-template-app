@@ -4,7 +4,7 @@ import 'package:bloc_template_app/src/features/sample_feature/domain/models/samp
 import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
 import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details/sample_item_details_screen.dart';
 import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_items_overview/sample_items_overview_screen.dart';
-import 'package:bloc_template_app/src/features/settings/domain/settings_service.dart';
+import 'package:bloc_template_app/src/features/settings/domain/settings_repository.dart';
 import 'package:bloc_template_app/src/features/settings/presentation/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,16 +12,16 @@ import 'package:mocktail/mocktail.dart';
 
 void main() {
   group("App", () {
-    late MockSettingsService mockSettingsService;
+    late MocksettingsRepository mocksettingsRepository;
     late MockSampleItemsRepository mockItemsRepository;
 
     setUp(() {
-      mockSettingsService = MockSettingsService();
+      mocksettingsRepository = MocksettingsRepository();
       const themeMode = ThemeMode.light;
       const language = 'en';
-      when(() => mockSettingsService.themeMode())
+      when(() => mocksettingsRepository.themeMode())
           .thenAnswer((_) async => themeMode);
-      when(() => mockSettingsService.languageCode())
+      when(() => mocksettingsRepository.languageCode())
           .thenAnswer((_) async => language);
 
       mockItemsRepository = MockSampleItemsRepository();
@@ -40,7 +40,7 @@ void main() {
       // Build the MyApp widget
       await tester.pumpWidget(TranslationProvider(
           child: App(
-              settingsService: mockSettingsService,
+              settingsRepository: mocksettingsRepository,
               sampleItemsRepository: mockItemsRepository)));
       await tester.pumpAndSettle();
       // Verify that the SampleItemListView is displayed
@@ -51,7 +51,7 @@ void main() {
       // Build the MyApp widget
       await tester.pumpWidget(TranslationProvider(
           child: App(
-              settingsService: mockSettingsService,
+              settingsRepository: mocksettingsRepository,
               sampleItemsRepository: mockItemsRepository)));
 
       // Wait for the animation to complete
@@ -71,7 +71,7 @@ void main() {
       // Build the MyApp widget
       await tester.pumpWidget(TranslationProvider(
           child: App(
-              settingsService: mockSettingsService,
+              settingsRepository: mocksettingsRepository,
               sampleItemsRepository: mockItemsRepository)));
 
       // Wait for the animation to complete
@@ -91,4 +91,4 @@ void main() {
 
 class MockSampleItemsRepository extends Mock implements SampleItemsRepository {}
 
-class MockSettingsService extends Mock implements SettingsService {}
+class MocksettingsRepository extends Mock implements SettingsRepository {}

@@ -1,3 +1,4 @@
+import 'package:bloc_template_app/src/core/themes/app_color_scheme.dart';
 import 'package:bloc_template_app/src/core/themes/app_palette.dart';
 import 'package:flutter/material.dart';
 
@@ -5,19 +6,20 @@ import 'colors_extension.dart';
 
 abstract class AppTheme {
   static final _darkColors = ColorsExtension(
-    titleBarColor: AppPalette.darkGray,
+    titleBarColor: AppPalette.avocado,
     buttonCornerRadius: 10,
   );
 
   static final _lightColors = ColorsExtension(
-    titleBarColor: AppPalette.lightGray,
+    titleBarColor: AppPalette.avocadoLush,
     buttonCornerRadius: 5,
   );
 
   static ThemeData get materialDark {
     return ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppPalette.darkGray,
+        colorScheme: AppColorScheme.dark,
+        scaffoldBackgroundColor: AppPalette.avocadoRipe,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(Colors.deepOrange),
@@ -29,7 +31,8 @@ abstract class AppTheme {
   static ThemeData get materialLight {
     return ThemeData(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: AppPalette.lightGray,
+      colorScheme: AppColorScheme.light,
+      scaffoldBackgroundColor: AppPalette.avocadoLush,
       extensions: [_lightColors],
     );
   }

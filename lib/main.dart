@@ -1,6 +1,6 @@
-import 'package:bloc_template_app/src/core/database/database.dart';
+import 'package:bloc_template_app/src/core/local_database/database.dart';
 import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
-import 'package:bloc_template_app/src/features/settings/domain/settings_service.dart';
+import 'package:bloc_template_app/src/features/settings/domain/settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -19,9 +19,9 @@ void main() async {
 
   runApp(TranslationProvider(
       child: App(
-    settingsService: SettingsService(),
+    settingsRepository: SettingsRepository(),
     sampleItemsRepository: SampleItemsRepository(
         localDataSource:
-            SampleItemsLocalDataSource(database: AppDatabase('dev'))),
+            SampleItemsLocalDataSource(database: LocalDatabase('dev'))),
   )));
 }

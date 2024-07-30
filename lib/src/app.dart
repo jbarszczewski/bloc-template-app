@@ -8,19 +8,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import '/i18n/translations.g.dart';
 import 'core/themes/app_theme.dart';
 import 'features/sample_feature/presentation/sample_items_overview/bloc/sample_items_overview_bloc.dart';
-import 'features/settings/domain/settings_service.dart';
+import 'features/settings/domain/settings_repository.dart';
 import 'features/settings/presentation/cubit/app_settings_cubit.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
-  final SettingsService _settingsService;
+  final SettingsRepository _settingsRepository;
   final SampleItemsRepository _sampleItemsRepository;
 
   const App(
-      {required SettingsService settingsService,
+      {required SettingsRepository settingsRepository,
       required SampleItemsRepository sampleItemsRepository,
       super.key})
-      : _settingsService = settingsService,
+      : _settingsRepository = settingsRepository,
         _sampleItemsRepository = sampleItemsRepository;
 
   @override
@@ -28,7 +28,7 @@ class App extends StatelessWidget {
     var router = appRouter;
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider.value(value: _settingsService),
+        RepositoryProvider.value(value: _settingsRepository),
         RepositoryProvider.value(value: _sampleItemsRepository),
       ],
       child: MultiBlocProvider(
@@ -38,12 +38,19 @@ class App extends StatelessWidget {
           BlocProvider<SampleItemDetailsCubit>(
               create: (_) => SampleItemDetailsCubit(_sampleItemsRepository)),
           BlocProvider<AppSettingsCubit>(
-            create: (_) => AppSettingsCubit(_settingsService)..initialize(),
+            create: (_) => AppSettingsCubit(_settingsRepository)..initialize(),
           ),
         ],
         child: BlocBuilder<AppSettingsCubit, AppSettingsState>(
             builder: (context, state) {
           return MaterialApp.router(
+            builder: (context, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.noScaling),
+                child: child!,
+              );
+            },
             debugShowCheckedModeBanner: false,
             routerConfig: router,
             // Providing a restorationScopeId allows the Navigator built by the

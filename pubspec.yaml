@@ -24,6 +24,7 @@ dependencies:
   sqlite3_flutter_libs: ^0.5.24
   supabase_flutter: ^2.5.2
   uuid: ^4.4.2
+  vector_graphics: ^1.1.11+1
 
 dev_dependencies:
   bloc_test: ^9.1.7
@@ -35,6 +36,7 @@ dev_dependencies:
   freezed: ^2.5.2
   mocktail: ^1.0.4
   slang_build_runner: ^3.29.0
+  vector_graphics_compiler: ^1.1.11+1
 
 flutter:
   uses-material-design: true
@@ -45,3 +47,6 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - path: assets/svg/
+      transformers:
+        - package: vector_graphics_compiler

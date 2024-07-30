@@ -238,9 +238,9 @@ class SampleItemsCompanion extends UpdateCompanion<SampleItem> {
   }
 }
 
-abstract class _$AppDatabase extends GeneratedDatabase {
-  _$AppDatabase(QueryExecutor e) : super(e);
-  $AppDatabaseManager get managers => $AppDatabaseManager(this);
+abstract class _$LocalDatabase extends GeneratedDatabase {
+  _$LocalDatabase(QueryExecutor e) : super(e);
+  $LocalDatabaseManager get managers => $LocalDatabaseManager(this);
   late final $SampleItemsTable sampleItems = $SampleItemsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -265,14 +265,14 @@ typedef $$SampleItemsTableUpdateCompanionBuilder = SampleItemsCompanion
 });
 
 class $$SampleItemsTableTableManager extends RootTableManager<
-    _$AppDatabase,
+    _$LocalDatabase,
     $SampleItemsTable,
     SampleItem,
     $$SampleItemsTableFilterComposer,
     $$SampleItemsTableOrderingComposer,
     $$SampleItemsTableCreateCompanionBuilder,
     $$SampleItemsTableUpdateCompanionBuilder> {
-  $$SampleItemsTableTableManager(_$AppDatabase db, $SampleItemsTable table)
+  $$SampleItemsTableTableManager(_$LocalDatabase db, $SampleItemsTable table)
       : super(TableManagerState(
           db: db,
           table: table,
@@ -308,7 +308,7 @@ class $$SampleItemsTableTableManager extends RootTableManager<
 }
 
 class $$SampleItemsTableFilterComposer
-    extends FilterComposer<_$AppDatabase, $SampleItemsTable> {
+    extends FilterComposer<_$LocalDatabase, $SampleItemsTable> {
   $$SampleItemsTableFilterComposer(super.$state);
   ColumnFilters<String> get content => $state.composableBuilder(
       column: $state.table.content,
@@ -327,7 +327,7 @@ class $$SampleItemsTableFilterComposer
 }
 
 class $$SampleItemsTableOrderingComposer
-    extends OrderingComposer<_$AppDatabase, $SampleItemsTable> {
+    extends OrderingComposer<_$LocalDatabase, $SampleItemsTable> {
   $$SampleItemsTableOrderingComposer(super.$state);
   ColumnOrderings<String> get content => $state.composableBuilder(
       column: $state.table.content,
@@ -345,9 +345,9 @@ class $$SampleItemsTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
-class $AppDatabaseManager {
-  final _$AppDatabase _db;
-  $AppDatabaseManager(this._db);
+class $LocalDatabaseManager {
+  final _$LocalDatabase _db;
+  $LocalDatabaseManager(this._db);
   $$SampleItemsTableTableManager get sampleItems =>
       $$SampleItemsTableTableManager(_db, _db.sampleItems);
 }
