@@ -37,6 +37,7 @@ dev_dependencies:
   mocktail: ^1.0.4
   slang_build_runner: ^3.29.0
   vector_graphics_compiler: ^1.1.11+1
+  flutter_flavorizr: ^2.2.3
 
 flutter:
   uses-material-design: true
