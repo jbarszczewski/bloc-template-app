@@ -1,11 +1,13 @@
 import 'package:bloc_template_app/src/core/router/app_router.dart';
 import 'package:bloc_template_app/src/features/sample_feature/domain/sample_items_repository.dart';
 import 'package:bloc_template_app/src/features/sample_feature/presentation/sample_item_details/cubit/sample_item_details_cubit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '/i18n/translations.g.dart';
+import '../flavors.dart';
 import 'core/themes/app_theme.dart';
 import 'features/sample_feature/presentation/sample_items_overview/bloc/sample_items_overview_bloc.dart';
 import 'features/settings/domain/settings_repository.dart';
@@ -48,7 +50,10 @@ class App extends StatelessWidget {
               return MediaQuery(
                 data: MediaQuery.of(context)
                     .copyWith(textScaler: TextScaler.noScaling),
-                child: child!,
+                child: _flavorBanner(
+                  child: child!,
+                  show: kDebugMode,
+                ),
               );
             },
             debugShowCheckedModeBanner: false,
@@ -69,4 +74,24 @@ class App extends StatelessWidget {
       ),
     );
   }
+
+  Widget _flavorBanner({
+    required Widget child,
+    bool show = true,
+  }) =>
+      show
+          ? Banner(
+              location: BannerLocation.topStart,
+              message: F.name,
+              color: Colors.green.withOpacity(0.6),
+              textStyle: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12.0,
+                  letterSpacing: 1.0),
+              textDirection: TextDirection.ltr,
+              child: child,
+            )
+          : Container(
+              child: child,
+            );
 }
