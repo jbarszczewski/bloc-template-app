@@ -56,7 +56,9 @@ mixin _$AppSettingsState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppSettingsStateCopyWith<AppSettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$AppSettingsStateCopyWithImpl<$Res, $Val extends AppSettingsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +99,8 @@ class _$AppSettingsStateCopyWithImpl<$Res, $Val extends AppSettingsState>
     ) as $Val);
   }
 
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppSettingsCopyWith<$Res> get appSettings {
@@ -126,6 +132,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,7 +173,9 @@ class _$InitialImpl implements _Initial {
   @override
   int get hashCode => Object.hash(runtimeType, appSettings);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -239,8 +249,11 @@ abstract class _Initial implements AppSettingsState {
 
   @override
   AppSettings get appSettings;
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -267,6 +280,8 @@ class __$$UpdatedImplCopyWithImpl<$Res>
       _$UpdatedImpl _value, $Res Function(_$UpdatedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -306,7 +321,9 @@ class _$UpdatedImpl implements _Updated {
   @override
   int get hashCode => Object.hash(runtimeType, appSettings);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
@@ -380,8 +397,11 @@ abstract class _Updated implements AppSettingsState {
 
   @override
   AppSettings get appSettings;
+
+  /// Create a copy of AppSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
