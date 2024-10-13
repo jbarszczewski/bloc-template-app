@@ -1,0 +1,36 @@
+flavors:
+  development:
+    app:
+      name: "Block Template (dev)"
+      icon: "assets/icons/app_icon-development.jpeg"
+
+    android:
+      applicationId: "com.example.dev"  
+    ios:
+      bundleId: "com.example.dev"
+    macos:
+      bundleId: "com.example.dev"  
+
+  staging:
+    app:
+      name: "Banana App (staging)"
+      icon: "assets/icons/app_icon-staging.jpeg"
+  
+    android:
+      applicationId: "com.example.staging"
+    ios:
+      bundleId: "com.example.staging"
+    macos:
+      bundleId: "com.example.staging"
+
+  production:
+    app:
+      name: "Banana App"
+      icon: "assets/icons/app_icon-production.jpeg"
+  
+    android:
+      applicationId: "com.example.prod"
+    ios:
+      bundleId: "com.example.prod"
+    macos:
+      bundleId: "com.example.prod"

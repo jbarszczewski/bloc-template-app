@@ -85,6 +85,9 @@ class _$SampleItemDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,9 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -215,6 +221,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -329,6 +338,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -448,6 +460,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,6 +475,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SampleItemViewModelCopyWith<$Res> get item {
@@ -494,7 +510,9 @@ class _$SuccessImpl implements _Success {
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -579,7 +597,10 @@ abstract class _Success implements SampleItemDetailsState {
   const factory _Success(final SampleItemViewModel item) = _$SuccessImpl;
 
   SampleItemViewModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SampleItemDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
