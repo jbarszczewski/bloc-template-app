@@ -264,49 +264,6 @@ typedef $$SampleItemsTableUpdateCompanionBuilder = SampleItemsCompanion
   Value<int> rowid,
 });
 
-class $$SampleItemsTableTableManager extends RootTableManager<
-    _$LocalDatabase,
-    $SampleItemsTable,
-    SampleItem,
-    $$SampleItemsTableFilterComposer,
-    $$SampleItemsTableOrderingComposer,
-    $$SampleItemsTableCreateCompanionBuilder,
-    $$SampleItemsTableUpdateCompanionBuilder> {
-  $$SampleItemsTableTableManager(_$LocalDatabase db, $SampleItemsTable table)
-      : super(TableManagerState(
-          db: db,
-          table: table,
-          filteringComposer:
-              $$SampleItemsTableFilterComposer(ComposerState(db, table)),
-          orderingComposer:
-              $$SampleItemsTableOrderingComposer(ComposerState(db, table)),
-          updateCompanionCallback: ({
-            Value<String?> content = const Value.absent(),
-            Value<String> id = const Value.absent(),
-            Value<String> name = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              SampleItemsCompanion(
-            content: content,
-            id: id,
-            name: name,
-            rowid: rowid,
-          ),
-          createCompanionCallback: ({
-            Value<String?> content = const Value.absent(),
-            required String id,
-            required String name,
-            Value<int> rowid = const Value.absent(),
-          }) =>
-              SampleItemsCompanion.insert(
-            content: content,
-            id: id,
-            name: name,
-            rowid: rowid,
-          ),
-        ));
-}
-
 class $$SampleItemsTableFilterComposer
     extends FilterComposer<_$LocalDatabase, $SampleItemsTable> {
   $$SampleItemsTableFilterComposer(super.$state);
@@ -344,6 +301,74 @@ class $$SampleItemsTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
+
+class $$SampleItemsTableTableManager extends RootTableManager<
+    _$LocalDatabase,
+    $SampleItemsTable,
+    SampleItem,
+    $$SampleItemsTableFilterComposer,
+    $$SampleItemsTableOrderingComposer,
+    $$SampleItemsTableCreateCompanionBuilder,
+    $$SampleItemsTableUpdateCompanionBuilder,
+    (
+      SampleItem,
+      BaseReferences<_$LocalDatabase, $SampleItemsTable, SampleItem>
+    ),
+    SampleItem,
+    PrefetchHooks Function()> {
+  $$SampleItemsTableTableManager(_$LocalDatabase db, $SampleItemsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SampleItemsTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SampleItemsTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String?> content = const Value.absent(),
+            Value<String> id = const Value.absent(),
+            Value<String> name = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SampleItemsCompanion(
+            content: content,
+            id: id,
+            name: name,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            Value<String?> content = const Value.absent(),
+            required String id,
+            required String name,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SampleItemsCompanion.insert(
+            content: content,
+            id: id,
+            name: name,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SampleItemsTableProcessedTableManager = ProcessedTableManager<
+    _$LocalDatabase,
+    $SampleItemsTable,
+    SampleItem,
+    $$SampleItemsTableFilterComposer,
+    $$SampleItemsTableOrderingComposer,
+    $$SampleItemsTableCreateCompanionBuilder,
+    $$SampleItemsTableUpdateCompanionBuilder,
+    (
+      SampleItem,
+      BaseReferences<_$LocalDatabase, $SampleItemsTable, SampleItem>
+    ),
+    SampleItem,
+    PrefetchHooks Function()>;
 
 class $LocalDatabaseManager {
   final _$LocalDatabase _db;

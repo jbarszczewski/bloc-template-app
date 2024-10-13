@@ -19,7 +19,9 @@ mixin _$AppSettings {
   String get languageCode => throw _privateConstructorUsedError;
   ThemeMode get themeMode => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppSettingsCopyWith<AppSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$AppSettingsCopyWithImpl<$Res, $Val extends AppSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$AppSettingsImplCopyWithImpl<$Res>
       _$AppSettingsImpl _value, $Res Function(_$AppSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,7 +136,9 @@ class _$AppSettingsImpl implements _AppSettings {
   @override
   int get hashCode => Object.hash(runtimeType, languageCode, themeMode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppSettingsImplCopyWith<_$AppSettingsImpl> get copyWith =>
@@ -146,8 +154,11 @@ abstract class _AppSettings implements AppSettings {
   String get languageCode;
   @override
   ThemeMode get themeMode;
+
+  /// Create a copy of AppSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppSettingsImplCopyWith<_$AppSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
